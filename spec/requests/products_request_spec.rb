@@ -14,6 +14,25 @@ RSpec.describe "Products API", :type => :request do
     it "responds with a collection of products" do
       expect(response).to match_response_schema("products")
     end
+
+    context "when name filter is present" do
+      before(:all) do
+        product_attributes = {}
+        product_attributes[:name] = Faker::Commerce.product_name
+        product_attributes[:price] = Faker::Commerce.price
+        product_attributes[:category] = Faker::Commerce.department(1)
+        existing_product = Product.create(product_attributes)
+        get "/products?filter[name]=#{existing_product.name}"
+      end
+
+      it "responds with a status of 200" do
+        expect(response.status).to eq(200)
+      end
+
+      it "responds with a product" do
+        expect(response).to match_response_schema("product")
+      end
+    end
   end
 
   describe "GET /products/:id" do
@@ -183,6 +202,4 @@ RSpec.describe "Products API", :type => :request do
       end
     end
   end
-
-  describe "POST /products/search"
 end
