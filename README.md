@@ -15,10 +15,11 @@ In order to get the API running, please perform the following steps
 * run migrations - `bundle exec rake db:migrate`
 * start rails server - `bundle exec rails s`
 
-### Supported Endpoints 
+### Supported Endpoints
 This API supports the following endpoints   
 * POST /products - Create a product, it returns a product
 * GET /products - Get all products, it returns a collection of products
+* GET /products?filter[name]=:name - Filter products by name, it returns first matching product.
 * GET /products/:id - Get a single product, it returns a product
 * PATCH /products/:id - Update a product, it returns a product
 * POST /products/search - Search for products, it returns a collection of products
