@@ -1,13 +1,6 @@
 module APIClient
   class GetProduct < Base
     attr_accessor :product
-    #
-    # def self.call(id)
-    #   usecase = new
-    #   usecase.product = Product.find_by_id(id)
-    #   usecase.success = true if usecase.product
-    #   usecase
-    # end
 
     def self.call(id)
       usecase = new
