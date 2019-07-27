@@ -33,12 +33,15 @@ gem 'jbuilder', '~> 2.5'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'jsonapi-serializers', '~> 1.0', '>= 1.0.1'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec-rails', '~> 3.8'
 end
 
 group :development do
@@ -48,6 +51,17 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard', '~> 2.15'
+  gem 'guard-rails', '~> 0.8.1', require: false
+  gem 'guard-rspec', '~> 4.7', '>= 4.7.3'
+  gem 'rb-readline', '~> 0.5.5'
+  gem 'pry', '~> 0.12.2'
+  gem 'faker', '~> 1.9', '>= 1.9.6'
+end
+
+group :test do
+  gem 'json-schema', '~> 2.8', '>= 2.8.1'
+  gem 'database_cleaner', '~> 1.7'
 end
 
 
