@@ -22,7 +22,6 @@ This API supports the following endpoints
 * GET /products?filter[name]=:name - Filter products by name, it returns first matching product.
 * GET /products/:id - Get a single product, it returns a product
 * PATCH /products/:id - Update a product, it returns a product
-* POST /products/search - Search for products, it returns a collection of products
 * DELETE /products/:id - Delete a product, it returns nothing
 
 ### Running tests  
