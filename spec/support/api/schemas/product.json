@@ -1,0 +1,30 @@
+{
+  "type": "object",
+  "required": ["data"],
+  "properties": {
+    "data": {
+      "type" : "object",
+      "required" : [
+        "id",
+        "links",
+        "attributes",
+        "type"
+      ],
+      "properties": {
+        "attributes": {
+          "type" : "object",
+          "required" : [
+             "name",
+             "price",
+             "category",
+             "updated-at",
+             "added-at"
+           ]
+        },
+        "type": {},
+        "id": {},
+        "links": {}
+      }
+    }
+ }
+}
