@@ -36,7 +36,7 @@ RSpec.describe APIClient::SearchProductByName do
       it "returns itself" do
         expect(@usecase).to be_a_kind_of(described_class)
       end
-    end
+    end 
 
     context "when product does not exist" do
       before do
