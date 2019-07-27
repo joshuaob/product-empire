@@ -1,7 +1,12 @@
 class ProductsController < ApplicationController
   def index
-    usecase = APIClient::GetProducts.call
-    render json: JSONAPI::Serializer.serialize(usecase.products, is_collection: true), status: usecase.status
+    if params[:filter] && params[:filter][:name]
+      usecase =   APIClient::SearchProductByName.call(params[:filter][:name])
+      render json: JSONAPI::Serializer.serialize(usecase.product), status: usecase.status
+    else
+      usecase = APIClient::GetProducts.call
+      render json: JSONAPI::Serializer.serialize(usecase.products, is_collection: true), status: usecase.status
+    end
   end
 
   def create
@@ -45,16 +50,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def search
-    # usecase = APIClient::UpdateProduct.call(product_params)
-    #
-    # if usecase.success
-    #   render json: JSONAPI::Serializer.serialize(usecase.product), status: :ok
-    # else
-    #   render json: JSONAPI::Serializer.serialize_errors(usecase.product.errors), status: :unprocessable_entity
-    # end
-  end
-
   private
 
    def product_params
@@ -64,4 +59,8 @@ class ProductsController < ApplicationController
                                       :added_at,
                                       :updated_at)
    end
+
+   def filtering_params(params)
+    params.slice(:name, :category)
+  end
 end
