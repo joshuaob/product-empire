@@ -1,24 +1,28 @@
-# README
+# Product Empire - JSON API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Welcome to the Product Empire API. This is a ruby on rails API built according to the JSONAPI spec for the management of Products. The following outline the steps necessary to get the API up and running.
 
-Things you may want to cover:
+### Prerequisite
+This project is built on Ruby (2.5.3), the following gems are required
+* bundler - `gem install bundler`
 
-* Ruby version
+### Starting Up  
+In order to get the API running, please perform the following steps
+* clone this repo - `git clone https://github.com/joshuaob/product-empire.git`
+* change into directory - `cd product_empire`
+* install dependencies - `bundle install`
+* create databases - `bundle exec rake db:create`
+* run migrations - `bundle exec rake db:migrate`
+* start rails server - `bundle exec rails s`
 
-* System dependencies
+### Supported Endpoints 
+This API supports the following endpoints   
+* POST /products - Create a product, it returns a product
+* GET /products - Get all products, it returns a collection of products
+* GET /products/:id - Get a single product, it returns a product
+* PATCH /products/:id - Update a product, it returns a product
+* POST /products/search - Search for products, it returns a collection of products
+* DELETE /products/:id - Delete a product, it returns nothing
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+### Running tests  
+You may run the test suite with - `bundle exec rspec spec`
